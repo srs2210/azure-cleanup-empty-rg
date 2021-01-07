@@ -2,6 +2,7 @@ $ErrorActionPreference = "Stop"
 $tenantId = "<YOUR_TENANT_ID>"
 
 # Enter your service principal client ID & secret here
+# You will get the client ID and client secret after creating the service principal.
 $clientId = "<YOUR_CLIENT_ID>"
 $clientSecret = "<YOUR_CLIENT_SECRET>"
 $secClientSecret = ConvertTo-SecureString $clientSecret -AsPlainText -Force
@@ -15,7 +16,7 @@ $subscriptionIds = (Get-AzSubscription).Id
 
 Write-Host "Login Successfull..." -ForegroundColor Green
 
-# Loop through the list of subscriptions and to find empty resource groups
+# Loop through the list of subscriptions and find empty resource groups
 foreach ($subscription in $subscriptionIds) {
     Set-AzContext -SubscriptionId $subscription | Out-Null
 
